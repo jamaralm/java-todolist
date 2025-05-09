@@ -57,6 +57,10 @@ public class Task {
         this.created_at = created_at;
     }
 
+    public int getId(){
+        return id;
+    }
+
     public void getInfo(){
         System.out.println("Task ID: " + id);
         System.out.println("Name: " + name);
