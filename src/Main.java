@@ -82,10 +82,10 @@ public class Main {
                 System.out.println("Nova descricao da tarefa:");
                 String newTaskDescription = sc.nextLine();
 
-                if (!newTaskName.equals(task.getName())){
+                if (!newTaskName.equals(task.getName()) || newTaskName.equals(" ")){
                     task.setName(newTaskName);
                     System.out.println("Nome alterado! " + task.getName());
-                }else if (!newTaskDescription.equals(task.getDescription())) {
+                }else if (!newTaskDescription.equals(task.getDescription()) || newTaskDescription.equals(" ")) {
                     task.setDescription(newTaskDescription);
                     System.out.println("Descricao alterada! " + task.getDescription());
                 } else {
