@@ -11,7 +11,7 @@ public class Main {
         boolean continuar;
 
         do{
-            System.out.println("Oque deseja fazer?\n 1. Adicionar Tarefa\n2. Remover Tarefa\n3. Listar Tarefas\n4. Buscar Tarefa pelo ID");
+            System.out.println("Oque deseja fazer?\n 1. Adicionar Tarefa\n2. Remover Tarefa\n3. Buscar Tarefa pelo ID\n4. Listar Tarefas");
 
             int userInput = sc.nextInt();
             sc.nextLine();
@@ -52,7 +52,9 @@ public class Main {
 
     public static void showTaskList(ArrayList<Task> taskList){
         System.out.println("\nTarefas: ");
-        for (Task task : taskList) System.out.println("TASK NAME: " + task.getName());;
+        for (Task task : taskList) System.out.println("Nome da Tarefa: " + task.getName());
+        System.out.println("Tarefas Completas: " + getCompletedTaskQuant(taskList));
+        System.out.println("Tarefas Incompletas: " + getNotCompletedTaskQuant(taskList));;
     }
 
     public static void searchTaskById(ArrayList<Task> taskList){
@@ -64,6 +66,31 @@ public class Main {
         for (Task task : taskList){
             if (id == task.getId()){
                 task.getInfo();
+            }
+        }
+    }
+
+    public static void editTaskById(ArrayList<Task> taskList){
+        Scanner sc =  new Scanner(System.in);
+        System.out.println("Id da tarefa:");
+        int id = sc.nextInt();
+
+        for (Task task : taskList){
+            if(id == task.getId()){
+                System.out.println("Novo nome da tarefa:");
+                String newTaskName = sc.nextLine();
+                System.out.println("Nova descricao da tarefa:");
+                String newTaskDescription = sc.nextLine();
+
+                if (!newTaskName.equals(task.getName())){
+                    task.setName(newTaskName);
+                    System.out.println("Nome alterado! " + task.getName());
+                }else if (!newTaskDescription.equals(task.getDescription())) {
+                    task.setDescription(newTaskDescription);
+                    System.out.println("Descricao alterada! " + task.getDescription());
+                } else {
+                    System.out.println("Nenhuma informacao alterada!");
+                }
             }
         }
     }
