@@ -6,12 +6,20 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        ArrayList<Task> taskList = new ArrayList<Task>();
+        ArrayList<Task> taskList = new ArrayList<>();
 
         boolean continuar;
 
         do{
-            System.out.println("Oque deseja fazer?\n 1. Adicionar Tarefa\n2. Remover Tarefa\n3. Buscar Tarefa pelo ID\n4. Listar Tarefas");
+            System.out.println(
+                    "\nO que deseja fazer?\n" +
+                            "1. Adicionar Tarefa\n" +
+                            "2. Remover Tarefa\n" +
+                            "3. Buscar Tarefa pelo ID\n" +
+                            "4. Listar Tarefas\n" +
+                            "5. Editar Tarefa\n" +
+                            "6. Concluir Tarefa\n"
+            );
 
             int userInput = sc.nextInt();
             sc.nextLine();
@@ -29,6 +37,14 @@ public class Main {
                 case 4:
                     showTaskList(taskList);
                     break;
+                case 5:
+                    editTaskById(taskList);
+                    break;
+                case 6:
+                    markTaskAsDone(taskList);
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
             }
 
             System.out.println("Deseja Continuar? (S/N)");
@@ -51,10 +67,12 @@ public class Main {
     }
 
     public static void showTaskList(ArrayList<Task> taskList){
+        System.out.println("Total de Tarefas: " + getTaskQuantity(taskList));
+        System.out.println("Tarefas Completas: " + getCompletedTaskQuant(taskList));
+        System.out.println("Tarefas Incompletas: " + getNotCompletedTaskQuant(taskList));
+
         System.out.println("\nTarefas: ");
         for (Task task : taskList) System.out.println("Nome da Tarefa: " + task.getName());
-        System.out.println("Tarefas Completas: " + getCompletedTaskQuant(taskList));
-        System.out.println("Tarefas Incompletas: " + getNotCompletedTaskQuant(taskList));;
     }
 
     public static void searchTaskById(ArrayList<Task> taskList){
@@ -124,12 +142,8 @@ public class Main {
     }
 
     //Retorna a quantidade total de tarefas
-    public int getLength(ArrayList<Task> taskList){
-        int length = 0;
-        for (Task task : taskList){
-            length++;
-        }
-        return length;
+    public static int getTaskQuantity(ArrayList<Task> taskList){
+        return taskList.size();
     }
 
     //Retorna a quantidade de Tarefas concluidas
