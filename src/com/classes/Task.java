@@ -57,6 +57,10 @@ public class Task {
         this.created_at = created_at;
     }
 
+    public void setCompleted_at() {
+        this.completed_at = LocalDateTime.now();
+    }
+
     public int getId(){
         return id;
     }

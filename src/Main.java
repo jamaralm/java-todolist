@@ -109,6 +109,20 @@ public class Main {
         }
     }
 
+    public static void markTaskAsDone(ArrayList<Task> taskList){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Id da tarefa:");
+        int id = sc.nextInt();
+
+        for (Task task : taskList){
+            if (task.getId() == id){
+                task.changeStatus();
+                task.setCompleted_at();
+                System.out.println("Tarefa " + task.getName() + " Marcada como FEITO!");
+            }
+        }
+    }
+
     //Retorna a quantidade total de tarefas
     public int getLength(ArrayList<Task> taskList){
         int length = 0;
