@@ -43,6 +43,7 @@ public class Task {
     }
     public void changeStatus() {
         this.status = "Feito";
+        setCompleted_at();
     }
 
     public LocalDateTime getCreated_at() {
@@ -72,7 +73,7 @@ public class Task {
         System.out.println("Status: " + status);
         System.out.println("Created at: " + created_at.format(formatter));
         if (completed_at == null){
-            System.out.println("");
+            System.out.println();
         } else {
             System.out.println("Completed at: " + completed_at.format(formatter));
         }
