@@ -26,22 +26,22 @@ public class Main {
 
             switch (userInput){
                 case 1:
-                    addTask(taskList);
+                    addTask(taskList, sc);
                     break;
                 case 2:
-                    deleteTaskById(taskList);
+                    deleteTaskById(taskList, sc);
                     break;
                 case 3:
-                    searchTaskById(taskList);
+                    searchTaskById(taskList, sc);
                     break;
                 case 4:
                     showTaskList(taskList);
                     break;
                 case 5:
-                    editTaskById(taskList);
+                    editTaskById(taskList, sc);
                     break;
                 case 6:
-                    markTaskAsDone(taskList);
+                    markTaskAsDone(taskList, sc);
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
@@ -54,9 +54,7 @@ public class Main {
         }while(continuar);
     }
 
-    public static void addTask(ArrayList<Task> taskList){
-        Scanner sc = new Scanner(System.in);
-
+    public static void addTask(ArrayList<Task> taskList, Scanner sc){
         System.out.println("Nome da tarefa:");
         String taskName = sc.nextLine();
         System.out.println("Descricao da tarefa: ");
@@ -75,9 +73,7 @@ public class Main {
         for (Task task : taskList) System.out.println("Nome da Tarefa: " + task.getName());
     }
 
-    public static void searchTaskById(ArrayList<Task> taskList){
-        Scanner sc = new Scanner(System.in);
-
+    public static void searchTaskById(ArrayList<Task> taskList, Scanner sc){
         System.out.println("Id da tarefa:");
         int id = sc.nextInt();
 
@@ -88,8 +84,7 @@ public class Main {
         }
     }
 
-    public static void editTaskById(ArrayList<Task> taskList){
-        Scanner sc =  new Scanner(System.in);
+    public static void editTaskById(ArrayList<Task> taskList, Scanner sc){
         System.out.println("Id da tarefa:");
         int id = sc.nextInt();
 
@@ -113,9 +108,7 @@ public class Main {
         }
     }
 
-    public static void deleteTaskById(ArrayList<Task> taskList){
-        Scanner sc = new Scanner(System.in);
-
+    public static void deleteTaskById(ArrayList<Task> taskList, Scanner sc){
         System.out.println("Id da tarefa:");
         int id = sc.nextInt();
 
@@ -127,8 +120,7 @@ public class Main {
         }
     }
 
-    public static void markTaskAsDone(ArrayList<Task> taskList){
-        Scanner sc = new Scanner(System.in);
+    public static void markTaskAsDone(ArrayList<Task> taskList, Scanner sc){
         System.out.println("Id da tarefa:");
         int id = sc.nextInt();
 
