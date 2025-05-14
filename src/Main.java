@@ -111,13 +111,15 @@ public class Main {
     public static void deleteTaskById(ArrayList<Task> taskList, Scanner sc){
         System.out.println("Id da tarefa:");
         int id = sc.nextInt();
+        ArrayList<Task> taskToRemove = new ArrayList<>();
 
         for (Task task : taskList){
             if (id == task.getId()){
-                taskList.remove(task);
-                System.out.println("Tarefa removida com sucesso!");
+                taskToRemove.add(task);
             }
         }
+
+        taskList.removeAll(taskToRemove);
     }
 
     public static void markTaskAsDone(ArrayList<Task> taskList, Scanner sc){
