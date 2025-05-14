@@ -60,14 +60,12 @@ public class Main {
             System.out.println("Deseja Continuar? (S/N)");
             String userInputToContinue = sc.nextLine();
 
-            while(!userInputToContinue.contains("SNsn")){
-                System.out.println("Insira um valor valido!");
-
-                System.out.println("Deseja Continuar? (S/N)");
+            while (!userInputToContinue.equalsIgnoreCase("S") && !userInputToContinue.equalsIgnoreCase("N")) {
+                System.out.println("Insira um valor válido! (S/N)");
                 userInputToContinue = sc.nextLine();
             }
 
-            continuar = userInputToContinue.contains("Ss");
+            continuar = userInputToContinue.equalsIgnoreCase("S");
         }while(continuar);
     }
 
