@@ -150,13 +150,20 @@ public class Main {
 
     public static Task getTaskById(ArrayList<Task> taskList, int id){
         Task returnTask = null;
+        boolean taskFound = false;
 
         for (Task task : taskList){
             if (task.getId() == id){
                 returnTask = task;
+                taskFound = true;
             }
         }
-        return returnTask;
+        if (taskFound) {
+            return returnTask;
+        } else {
+            System.out.println("Tarefa não Encontrada!");
+            return null;
+        }
     }
 
     public static void markTaskAsDone(ArrayList<Task> taskList, Scanner sc){
