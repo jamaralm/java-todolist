@@ -12,24 +12,25 @@ public class Main {
 
         do{
             System.out.println(
-                    "\nO que deseja fazer?\n" +
+                    "\nBem vindo(a) a central de controle de atividades!\n" +
                             "1. Adicionar Tarefa\n" +
                             "2. Remover Tarefa\n" +
                             "3. Buscar Tarefa pelo ID\n" +
                             "4. Listar Tarefas\n" +
                             "5. Editar Tarefa\n" +
-                            "6. Concluir Tarefa\n"
+                            "6. Concluir Tarefa\n\n" +
+                            "O que deseja fazer? "
             );
 
             while(!sc.hasNextInt()){
-                System.out.println("Insira um numero valido!");
+                System.out.println("Insira um número válido!");
                 sc.nextLine();
             }
             int userInput = sc.nextInt();
             sc.nextLine();
 
             while(userInput < 0 || userInput > 6){
-                System.out.println("Insira um numero valido!");
+                System.out.println("Insira um número válido!");
                 userInput = sc.nextInt();
                 sc.nextLine();
             }
@@ -70,17 +71,17 @@ public class Main {
     }
 
     public static void addTask(ArrayList<Task> taskList, Scanner sc){
-        System.out.println("Nome da tarefa:");
+        System.out.println("Nome da tarefa: ");
         String taskName = sc.nextLine();
-        System.out.println("Descricao da tarefa: ");
+        System.out.println("Descrição da tarefa: ");
         String taskDescription = sc.nextLine();
 
         while(taskName.isEmpty() || taskDescription.isEmpty()){
             System.out.println("Os campos de texto não devem estar vazios!");
 
-            System.out.println("Nome da tarefa:");
+            System.out.println("Nome da tarefa: ");
             taskName = sc.nextLine();
-            System.out.println("Descricao da tarefa: ");
+            System.out.println("Descrição da tarefa: ");
             taskDescription = sc.nextLine();
         }
 
@@ -88,7 +89,7 @@ public class Main {
 
         taskList.add(taskToAdd);
         System.out.println("Tarefa adicionada com sucesso!");
-        System.out.println("Id da tarefa " + taskToAdd.getName() + ": " + taskToAdd.getId());
+        System.out.println("Id da tarefa: " + taskToAdd.getName() + ": " + taskToAdd.getId());
     }
 
     public static void showTaskList(ArrayList<Task> taskList){
@@ -101,14 +102,14 @@ public class Main {
     }
 
     public static void searchTaskById(ArrayList<Task> taskList, Scanner sc){
-        System.out.println("Id da tarefa:");
+        System.out.println("Id da tarefa: ");
         int id = sc.nextInt();
         sc.nextLine();
 
         while(id < 0){
             System.out.println("Insira um ID Valido!");
 
-            System.out.println("Id da tarefa:");
+            System.out.println("Id da tarefa: ");
             id = sc.nextInt();
             sc.nextLine();
         }
@@ -118,15 +119,15 @@ public class Main {
     }
 
     public static void editTaskById(ArrayList<Task> taskList, Scanner sc){
-        System.out.println("Id da tarefa:");
+        System.out.println("Id da tarefa: ");
         int id = sc.nextInt();
         sc.nextLine();
 
         for (Task task : taskList){
             if(id == task.getId()){
-                System.out.println("Novo nome da tarefa:");
+                System.out.println("Novo nome da tarefa: ");
                 String newTaskName = sc.nextLine();
-                System.out.println("Nova descricao da tarefa:");
+                System.out.println("Nova descrição da tarefa: ");
                 String newTaskDescription = sc.nextLine();
 
                 if (!newTaskName.equals(task.getName()) || newTaskName.equals(" ")){
@@ -134,16 +135,16 @@ public class Main {
                     System.out.println("Nome alterado! " + task.getName());
                 }else if (!newTaskDescription.equals(task.getDescription()) || newTaskDescription.equals(" ")) {
                     task.setDescription(newTaskDescription);
-                    System.out.println("Descricao alterada! " + task.getDescription());
+                    System.out.println("Descrição alterada! " + task.getDescription());
                 } else {
-                    System.out.println("Nenhuma informacao alterada!");
+                    System.out.println("Nenhuma informação alterada!");
                 }
             }
         }
     }
 
     public static void deleteTaskById(ArrayList<Task> taskList, Scanner sc){
-        System.out.println("Id da tarefa:");
+        System.out.println("Id da tarefa: ");
         int id = sc.nextInt();
         sc.nextLine();
         ArrayList<Task> taskToRemoveList = new ArrayList<>();
@@ -172,13 +173,13 @@ public class Main {
     }
 
     public static void markTaskAsDone(ArrayList<Task> taskList, Scanner sc){
-        System.out.println("Id da tarefa:");
+        System.out.println("Id da tarefa: ");
         int id = sc.nextInt();
         sc.nextLine();
 
         Task task = getTaskById(taskList, id);
         task.changeStatus();
-        System.out.println("Tarefa " + task.getName() + " Marcada como FEITO!");
+        System.out.println("Tarefa " + task.getName() + " marcada como feita!");
     }
 
     //Retorna a quantidade total de tarefas
