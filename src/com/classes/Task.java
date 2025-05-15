@@ -67,15 +67,15 @@ public class Task {
     }
 
     public void getInfo(){
-        System.out.println("Id da Tarefa: " + id);
-        System.out.println("Nome: " + name);
-        System.out.println("Descrição: " + description);
+        System.out.println("Task ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Description: " + description);
         System.out.println("Status: " + status);
-        System.out.println("Criada em: " + created_at.format(formatter));
+        System.out.println("Created at: " + created_at.format(formatter));
         if (completed_at == null){
             System.out.println();
         } else {
-            System.out.println("Concluida em: " + completed_at.format(formatter));
+            System.out.println("Completed at: " + completed_at.format(formatter));
         }
     }
 }
