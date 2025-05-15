@@ -84,8 +84,11 @@ public class Main {
             taskDescription = sc.nextLine();
         }
 
-        taskList.add(new Task(taskName,taskDescription));
+        Task taskToAdd = new Task(taskName, taskDescription);
+
+        taskList.add(taskToAdd);
         System.out.println("Tarefa adicionada com sucesso!");
+        System.out.println("Id da tarefa " + taskToAdd.getName() + ": " + taskToAdd.getId());
     }
 
     public static void showTaskList(ArrayList<Task> taskList){
@@ -100,12 +103,14 @@ public class Main {
     public static void searchTaskById(ArrayList<Task> taskList, Scanner sc){
         System.out.println("Id da tarefa:");
         int id = sc.nextInt();
+        sc.nextLine();
 
         while(id < 0){
             System.out.println("Insira um ID Valido!");
 
             System.out.println("Id da tarefa:");
             id = sc.nextInt();
+            sc.nextLine();
         }
 
         Task task = getTaskById(taskList, id);
@@ -115,6 +120,7 @@ public class Main {
     public static void editTaskById(ArrayList<Task> taskList, Scanner sc){
         System.out.println("Id da tarefa:");
         int id = sc.nextInt();
+        sc.nextLine();
 
         for (Task task : taskList){
             if(id == task.getId()){
@@ -139,6 +145,7 @@ public class Main {
     public static void deleteTaskById(ArrayList<Task> taskList, Scanner sc){
         System.out.println("Id da tarefa:");
         int id = sc.nextInt();
+        sc.nextLine();
         ArrayList<Task> taskToRemoveList = new ArrayList<>();
 
         Task taskToRemove = getTaskById(taskList, id);
@@ -167,6 +174,7 @@ public class Main {
     public static void markTaskAsDone(ArrayList<Task> taskList, Scanner sc){
         System.out.println("Id da tarefa:");
         int id = sc.nextInt();
+        sc.nextLine();
 
         Task task = getTaskById(taskList, id);
         task.changeStatus();
