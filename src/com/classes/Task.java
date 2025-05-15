@@ -41,9 +41,15 @@ public class Task {
     public String getStatus() {
         return status;
     }
-    public void changeStatus() {
-        this.status = "Feito";
-        setCompleted_at();
+    public void changeStatus(String actualStatus) {
+        if (actualStatus.equals("A Fazer")){
+            this.status = "Em Andamento";
+            System.out.println("Status alterado para Em Andamento!");
+        } else if (actualStatus.equals("Em Andamento")){
+            this.status = "Feito";
+            setCompleted_at();
+            System.out.println("Status alterado para Feito!");
+        }
     }
 
     public LocalDateTime getCreated_at() {

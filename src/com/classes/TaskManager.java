@@ -90,10 +90,8 @@ public class TaskManager {
         sc.nextLine();
 
         Task task = getTaskById(id);
-        if (task != null) {
-            task.changeStatus();
-            System.out.println("Tarefa " + task.getName() + " marcada como feita!");
-        }
+        
+        if (task != null) task.changeStatus(task.getStatus());
     }
 
     private Task getTaskById(int id){

@@ -16,7 +16,8 @@ public class Main {
                             "3. Buscar Tarefa pelo ID\n" +
                             "4. Listar Tarefas\n" +
                             "5. Editar Tarefa\n" +
-                            "6. Concluir Tarefa\n\n" +
+                            "6. Começar Tarefa\n" +
+                            "7. Concluir Tarefa\n\n" +
                             "O que deseja fazer? "
             );
 
@@ -27,7 +28,7 @@ public class Main {
             int userInput = sc.nextInt();
             sc.nextLine();
 
-            while(userInput < 0 || userInput > 6){
+            while(userInput < 0 || userInput > 7){
                 System.out.println("Insira um número válido!");
                 userInput = sc.nextInt();
                 sc.nextLine();
@@ -49,7 +50,7 @@ public class Main {
                 case 5:
                     manager.editTaskById(sc);
                     break;
-                case 6:
+                case 6, 7:
                     manager.markTaskAsDone(sc);
                     break;
                 default:
