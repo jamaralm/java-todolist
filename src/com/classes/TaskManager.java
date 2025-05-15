@@ -27,7 +27,7 @@ public class TaskManager {
         Task taskToAdd = new Task(taskName, taskDescription);
         taskList.add(taskToAdd);
         System.out.println("Tarefa adicionada com sucesso!");
-        System.out.println("Id da tarefa: " + taskToAdd.getId() + "" + taskToAdd.getName());
+        System.out.println("ID da tarefa: " + taskToAdd.getId());
     }
 
     public void showTaskList(){
@@ -37,7 +37,7 @@ public class TaskManager {
 
         System.out.println("\nTarefas: ");
         for (Task task : taskList)
-            System.out.println(task.getId() + " | " + task.getName() + " | " + task.getStatus());
+            System.out.println("Nome da Tarefa: " + task.getName() + " (ID: " + task.getId() + " )" );
     }
 
     public void searchTaskById(Scanner sc){
