@@ -2,6 +2,7 @@ package com.classes;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,6 +24,12 @@ public class TaskManager {
         System.out.println("Prazo da tarefa (Deixe em branco para não ter prazo): ");
         String deadline = sc.nextLine();
 
+        while(userName.trim().isEmpty()) {
+            System.out.println("Nome de usuário não pode ser vazio!");
+            System.out.println("Usuário da tarefa: ");
+            userName = sc.nextLine();
+        }
+
         while(taskName.isEmpty() || taskDescription.isEmpty()){
             System.out.println("Os campos de texto não devem estar vazios!");
             System.out.println("Nome da tarefa: ");
@@ -31,27 +38,25 @@ public class TaskManager {
             taskDescription = sc.nextLine();
         }
 
+        User user = new User(userName);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        Task taskToAdd;
+
         if (deadline.isEmpty()) {
-            User user = new User(userName);
-
-            Task taskToAdd = new SimpleTask(taskName, taskDescription, user);
-            taskList.add(taskToAdd);
-
-            System.out.println("Tarefa adicionada com sucesso!");
-            System.out.println("ID da tarefa: " + taskToAdd.getId());
-        } else if (!deadline.isEmpty()) {
-            User user = new User(userName);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-            LocalDate deadlineFormatted = LocalDate.parse(deadline);
-            deadlineFormatted.format(formatter);
-
-            Task taskToAdd = new TaskWithDeadline(taskName, taskDescription, user, deadlineFormatted);
-            taskList.add(taskToAdd);
-
-            System.out.println("Tarefa adicionada com sucesso!");
-            System.out.println("ID da tarefa: " + taskToAdd.getId());
+            taskToAdd = new SimpleTask(taskName, taskDescription, user);
+        } else {
+            try {
+                LocalDate deadlineFormatted = LocalDate.parse(deadline, formatter);
+                taskToAdd = new TaskWithDeadline(taskName, taskDescription, user, deadlineFormatted);
+            } catch (DateTimeParseException e) {
+                System.out.println("Data inválida. Use o formato dd-MM-yyyy.");
+                return;
+            }
         }
+
+        taskList.add(taskToAdd);
+        System.out.println("Tarefa adicionada com sucesso!");
+        System.out.println("ID da tarefa: " + taskToAdd.getId());
     }
 
     public void showTaskList(){
@@ -77,10 +82,17 @@ public class TaskManager {
         System.out.println("Usuário: ");
         String username = sc.nextLine();
 
-        User user = new User(username);
+        boolean found = false;
+        for (Task task : taskList) {
+            if (task.getUser().getUsername().equals(username)) {
+                task.getInfo();
+                found = true;
+            }
+        }
 
-        Task taskUser = getUserTasks(user);
-        if (taskUser != null) taskUser.getInfo();
+        if (!found) {
+            System.out.println("Nenhuma tarefa encontrada para esse usuário.");
+        }
     }
 
     public void editTaskById(Scanner sc){
@@ -124,8 +136,14 @@ public class TaskManager {
         sc.nextLine();
 
         Task task = getTaskById(id);
-        
-        if (task != null) task.changeStatus(task.getStatus());
+
+        if (task != null) {
+            Task.Status newStatus = task.getStatus() == Task.Status.Concluida
+                    ? Task.Status.Pendente
+                    : Task.Status.Concluida;
+            task.changeStatus(newStatus);
+            System.out.println("Status da tarefa atualizado para: " + newStatus);
+        }
     }
 
     private Task getTaskById(int id){
@@ -138,20 +156,21 @@ public class TaskManager {
         return null;
     }
 
-    private Task getUserTasks(User user){
-        for (Task task : taskList){
-            if (task.getUser() == user){
-                task.getInfo();
+    private List<Task> getUserTasks(User user) {
+        List<Task> userTasks = new ArrayList<>();
+        for (Task task : taskList) {
+            if (task.getUser().getUsername().equals(user.getUsername())) {
+                userTasks.add(task);
             }
         }
-        System.out.println("Tarefa não Encontrada!");
-        return null;
+        return userTasks;
     }
+
 
     private int getCompletedTaskQuant(){
         int completedLength = 0;
         for (Task task : taskList){
-            if (task.getStatus().equals("Feito")){
+            if (task.getStatus() == Task.Status.Concluida){
                 completedLength++;
             }
         }
@@ -161,7 +180,7 @@ public class TaskManager {
     private int getNotCompletedTaskQuant(){
         int notCompletedLength = 0;
         for (Task task : taskList){
-            if (!task.getStatus().equals("Feito")){
+            if (task.getStatus() != Task.Status.Concluida){
                 notCompletedLength++;
             }
         }

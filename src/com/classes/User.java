@@ -19,4 +19,9 @@ public class User {
     public String getUsername(){
         return name;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

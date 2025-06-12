@@ -8,7 +8,7 @@ public abstract class Task {
     public abstract void changeStatus();
 
     public enum Status {
-        A_Fazer,
+        Pendente,
         Em_Andamento,
         Concluida
     }
@@ -30,7 +30,7 @@ public abstract class Task {
         this.name = name;
         this.description = description;
         this.user = user;
-        this.status = Status.A_Fazer;
+        this.status = Status.Pendente;
         this.created_at = LocalDateTime.now();
     }
 
@@ -83,22 +83,21 @@ public abstract class Task {
         this.description = description;
     }
 
-    public void changeStatus(Status actualStatus) {
-        switch (status) {
-            case A_Fazer:
-                status = Status.Em_Andamento;
+    public void changeStatus(Status newStatus) {
+        switch (newStatus) {
+            case Pendente:
+                this.status = Status.Em_Andamento;
                 System.out.println("Status alterado para Em Andamento!");
                 break;
             case Em_Andamento:
-                status = Status.Concluida;
+                this.status = Status.Concluida;
                 setCompleted_at();
-                System.out.println("Status alterado para Concluida!");
+                System.out.println("Status alterado para Concluída!");
                 break;
             case Concluida:
                 System.out.println("A Tarefa já está Concluída.");
                 break;
         }
-
     }
 
     public void setCreated_at(LocalDateTime created_at) {
