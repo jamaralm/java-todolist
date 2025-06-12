@@ -16,7 +16,7 @@ public class User {
         this.created_at = LocalDateTime.now();
     }
 
-    public String getName(){
+    public String getUsername(){
         return name;
     }
 }

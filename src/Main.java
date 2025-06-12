@@ -13,7 +13,7 @@ public class Main {
                     "\nBem vindo(a) a central de controle de atividades!\n" +
                             "1. Adicionar Tarefa\n" +
                             "2. Remover Tarefa\n" +
-                            "3. Buscar Tarefa pelo ID\n" +
+                            "3. Buscar Tarefa pelo Usuario\n" +
                             "4. Listar Tarefas\n" +
                             "5. Editar Tarefa\n" +
                             "6. Começar Tarefa\n" +

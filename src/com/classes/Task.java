@@ -19,15 +19,17 @@ public abstract class Task {
     protected String name;
     protected String description;
     protected Status status;
+    protected User user;
     protected LocalDateTime created_at;
     protected LocalDateTime completed_at;
 
     protected static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
-    public Task(String name, String description) {
+    public Task(String name, String description, User user) {
         this.id = idGenerator++;
         this.name = name;
         this.description = description;
+        this.user = user;
         this.status = Status.A_Fazer;
         this.created_at = LocalDateTime.now();
     }
@@ -56,8 +58,13 @@ public abstract class Task {
         return id;
     }
 
+    public User getUser(){
+        return user;
+    }
+
     public void getInfo(){
         System.out.println("Task ID: " + id);
+        System.out.println("User: " + user);
         System.out.println("Name: " + name);
         System.out.println("Description: " + description);
         System.out.println("Status: " + status);

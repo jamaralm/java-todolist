@@ -6,8 +6,8 @@ public class TaskWithDeadline extends Task{
 
     private LocalDate deadline;
 
-    public TaskWithDeadline(String name, String description, LocalDate deadline) {
-        super(name, description);
+    public TaskWithDeadline(String name, String description, User user, LocalDate deadline) {
+        super(name, description, user);
         this.deadline = deadline;
     }
 
