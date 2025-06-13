@@ -106,6 +106,8 @@ public class TaskManager {
             String newTaskName = sc.nextLine();
             System.out.println("Nova descrição da tarefa: ");
             String newTaskDescription = sc.nextLine();
+            System.out.println("Nova usuário responsável pela tarefa: ");
+            String newTaskUser = sc.nextLine();
 
             if (!newTaskName.trim().isEmpty()) {
                 task.setName(newTaskName);
@@ -114,6 +116,10 @@ public class TaskManager {
             if (!newTaskDescription.trim().isEmpty()) {
                 task.setDescription(newTaskDescription);
                 System.out.println("Descrição alterada! " + task.getDescription());
+            }
+            if (!newTaskUser.trim().isEmpty()) {
+                task.setUser(newTaskUser);
+                System.out.println("Usuário alterado! " + task.getUser());
             }
         }
     }
@@ -165,7 +171,6 @@ public class TaskManager {
         }
         return userTasks;
     }
-
 
     private int getCompletedTaskQuant(){
         int completedLength = 0;

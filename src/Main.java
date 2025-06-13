@@ -14,10 +14,11 @@ public class Main {
                             "1. Adicionar Tarefa\n" +
                             "2. Remover Tarefa\n" +
                             "3. Buscar Tarefa pelo Usuario\n" +
-                            "4. Listar Tarefas\n" +
-                            "5. Editar Tarefa\n" +
-                            "6. Começar Tarefa\n" +
-                            "7. Concluir Tarefa\n\n" +
+                            "4. Buscar Tarefa do Usuário" +
+                            "5. Listar Tarefas\n" +
+                            "6. Editar Tarefa\n" +
+                            "7. Começar Tarefa\n" +
+                            "8. Concluir Tarefa\n\n" +
                             "O que deseja fazer? "
             );
 
@@ -45,12 +46,15 @@ public class Main {
                     manager.searchTaskById(sc);
                     break;
                 case 4:
-                    manager.showTaskList();
+                    manager.searchUserTasks(sc);
                     break;
                 case 5:
+                    manager.showTaskList();
+                    break;
+                case 6:
                     manager.editTaskById(sc);
                     break;
-                case 6, 7:
+                case 7, 8:
                     manager.markTaskAsDone(sc);
                     break;
                 default:

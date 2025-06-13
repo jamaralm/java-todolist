@@ -82,6 +82,9 @@ public abstract class Task {
     public void setDescription(String description) {
         this.description = description;
     }
+    public void setUser(String description) {
+        this.description = description;
+    }
 
     public void changeStatus(Status newStatus) {
         switch (newStatus) {
