@@ -14,7 +14,7 @@ public class Main {
                             "1. Adicionar Tarefa\n" +
                             "2. Remover Tarefa\n" +
                             "3. Buscar Tarefa pelo Usuario\n" +
-                            "4. Buscar Tarefa do Usuário" +
+                            "4. Buscar Tarefa do Usuário\n" +
                             "5. Listar Tarefas\n" +
                             "6. Editar Tarefa\n" +
                             "7. Começar Tarefa\n" +
