@@ -106,6 +106,8 @@ public class TaskManager {
             String newTaskName = sc.nextLine();
             System.out.println("Nova descrição da tarefa: ");
             String newTaskDescription = sc.nextLine();
+            System.out.println("Novo nome de usuário: ");
+            String newUsername = sc.nextLine();
 
             if (!newTaskName.trim().isEmpty()) {
                 task.setName(newTaskName);
@@ -114,6 +116,10 @@ public class TaskManager {
             if (!newTaskDescription.trim().isEmpty()) {
                 task.setDescription(newTaskDescription);
                 System.out.println("Descrição alterada! " + task.getDescription());
+            }
+            if (!newUsername.trim().isEmpty()){
+                task.setUser(newUsername);
+                System.out.println("Usuario Alterado!" + task.getUser());
             }
         }
     }

@@ -107,4 +107,8 @@ public abstract class Task {
     public void setCompleted_at() {
         this.completed_at = LocalDateTime.now();
     }
+
+    public void setUser(String newUserName){
+        this.user = new User(newUserName);
+    }
 }
