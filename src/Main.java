@@ -12,11 +12,11 @@ public class Main {
             System.out.println(
                     "\nBem-vindo(a) à Central de Controle de Atividades\n" +
                             "1. Adicionar Tarefa\n" +
-                            "2. Remover Tarefa por Título\n" +
-                            "3. Buscar Tarefa por Título\n" +
+                            "2. Remover Tarefa por Id\n" +
+                            "3. Buscar Tarefa por Id\n" +
                             "4. Buscar Tarefa por Usuário\n" +
                             "5. Listar Tarefas\n" +
-                            "6. Editar Tarefa por Título\n" +
+                            "6. Editar Tarefa por Id\n" +
                             "7. Começar Tarefa\n" +
                             "8. Concluir Tarefa\n" +
                             "0. Sair\n" +

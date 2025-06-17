@@ -138,11 +138,7 @@ public class TaskManager {
         Task task = getTaskById(id);
 
         if (task != null) {
-            Task.Status newStatus = task.getStatus() == Task.Status.Concluida
-                    ? Task.Status.Pendente
-                    : Task.Status.Concluida;
-            task.changeStatus(newStatus);
-            System.out.println("Status da tarefa atualizado para: " + newStatus);
+            task.changeStatus(task.getStatus());
         }
     }
 
